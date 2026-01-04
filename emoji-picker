@@ -8,10 +8,10 @@ for cmd in jq fzf wl-copy; do
     fi
 done
 
-FILE="unicode_17_emojis.json"
+FILE=$1
 
 if [ ! -f "$FILE" ]; then
-    echo "Error: $FILE not found. Run your Python script first."
+    echo "Error: $FILE not found"
     exit 1
 fi
 
@@ -30,4 +30,4 @@ cat "$FILE" | \
     tr -d '\n' | \
     wl-copy
 
-echo "Successfully copied to clipboard!"
+echo "$(wl-paste) copied to clipboard!"
