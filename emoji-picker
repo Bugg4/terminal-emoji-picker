@@ -22,8 +22,7 @@ fi
 # 4. Extract emoji, strip newline, and copy
 cat "$FILE" | \
     jq -r '.[] | select(.status == "fully-qualified") | "\(.emoji) \(.name) [\(.group)]"' | \
-    fzf --height 50% \
-        --border \
+    fzf --border \
         --header "Unicode 17.0 - Fully Qualified Emojis Only" \
         --prompt "🔍 " | \
     awk '{print $1}' | \
